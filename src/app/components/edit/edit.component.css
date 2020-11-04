@@ -1,0 +1,49 @@
+.container{
+  font-family: 'Courier New', Courier, monospace;
+  width: 60%;
+  margin: auto;
+  background-color: azure;
+  padding: 20px;
+  margin-top: 10px;
+  
+}
+
+
+.btncontainer{
+ text-align: center;
+ margin-top: 5%;
+}
+
+.btn{
+  background-color: rgb(36, 36, 255);
+  color: aliceblue;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  margin: 10px;
+  margin-bottom: 10px;
+}
+.btn:hover{
+  background-color: rgb(78, 78, 255);
+cursor: pointer;
+}
+
+.input{
+ display: flex;
+
+}
+.input label{
+  flex: 5;
+}
+.input input{
+  flex: 10;
+}
+
+input{
+  padding: 10px;
+  margin: 10px;
+}
+label{
+  padding: 10px;
+  margin: 10px;
+}
