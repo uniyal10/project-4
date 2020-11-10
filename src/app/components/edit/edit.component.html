@@ -1,0 +1,37 @@
+<div class="container">
+  <form action="">
+    <div class="input">
+      <label for="firstName">firstName</label>
+      <input name="firstName" [(ngModel)]="firstName" type="text">
+    </div>
+    <div class="input">
+      <label for="middleName">middleName</label>
+      <input name="middleName" [(ngModel)]="middleName" type="text">
+    </div>
+    <div class="input">
+      <label for="lastName">lastName</label>
+      <input name="lastName" [(ngModel)]="lastName" type="text">
+    </div>
+    <div class="input">
+      <label for="email">email</label>
+      <input name="email" [(ngModel)]="email" type="text">
+    </div>
+    <div class="input">
+      <label for="number">phoneNumber</label>
+      <input [(ngModel)]="phoneNumber" name="number" type="text">
+    </div>
+    <div class="input">
+      <label for="role">role</label>
+      <input [(ngModel)]="role" name="role" type="text">
+    </div>
+    <div class="input">
+      <label for="address">address</label>
+      <input name="address" [(ngModel)]="address" type="text">
+    </div>
+  </form>
+</div>
+
+<div class="btncontainer">
+  <button class="btn" (click)="onSave(user.id)">Save</button>
+  <button class="btn" (click)="onCancel()">Cancel</button>
+</div>

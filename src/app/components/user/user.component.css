@@ -1,0 +1,23 @@
+ td{
+  padding: 5px 10px;
+  border-right: 1px solid red;
+ }
+
+ button{
+   padding:10px 20px;
+   background-color: blue;
+   color: azure;
+   border: none;
+   outline: none;
+   font-family: Arial, Helvetica, sans-serif;
+   font-weight: bold;
+   border-radius: 10px;
+   margin: 5px;
+
+  }
+
+
+  button:hover{
+    cursor: pointer;
+    background-color: blueviolet;
+  }
