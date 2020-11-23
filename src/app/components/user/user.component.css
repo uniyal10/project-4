@@ -1,7 +1,4 @@
- td{
-  padding: 5px 10px;
-  border-right: 1px solid red;
- }
+ 
 
  button{
    padding:10px 20px;
@@ -16,8 +13,21 @@
 
   }
 
-
+i:hover{
+  cursor: pointer;
+}
   button:hover{
     cursor: pointer;
     background-color: blueviolet;
   }
+
+td{
+  padding: 10px;
+}
+
+input{
+  border: none;
+  text-align: center;
+  background-color: white;
+  padding: 10px 0px;
+}

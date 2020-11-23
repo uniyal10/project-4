@@ -1,5 +1,23 @@
 <div *ngIf="!isEdit" class="container">
-  <app-user (editEvent)="editEvent($event)" (deleteEvent)="deleteEvent($event)" *ngFor="let user of users"
+  <tr>
+    <!-- <th><input  value="firstname" readonly></th>
+    <th><input value="middlename" readonly></th>
+    <th><input value="lastname" readonly></th>
+    <th><input value="email" readonly></th>
+    <th><input value="phonenumber" readonly></th>
+    <th><input value="role" readonly></th>
+    <th><input value="address" readonly></th>
+    <th><input value="actions" readonly></th> -->
+    <th>firstname</th>
+    <th>middlename</th>
+    <th>lastname</th>
+    <th>email</th>
+    <th>phone</th>
+    <th>role</th>
+    <th>address</th>
+    <th>actions</th>
+  </tr>
+  <app-user (saveEvent)="saveEvent($event)" (deleteEvent)="deleteEvent($event)" *ngFor="let user of users"
     [user]="user"></app-user>
 </div>
 <div *ngIf="isEdit" class="container">
