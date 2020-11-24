@@ -29,4 +29,8 @@ export class UserService {
     console.log(user)
     return this.http.patch(url, JSON.stringify(user), httpOptions)
   }
+  addUser(user:User){
+    const url: string = `http://localhost:3000/users`
+    return this.http.post(url, JSON.stringify(user), httpOptions)
+  }
 }

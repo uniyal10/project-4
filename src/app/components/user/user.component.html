@@ -1,126 +1,70 @@
 
-<tr>
+
   <!-- <td>{{user.id}}</td> -->
-  <td><input [(ngModel)]="firstName" [ngStyle]="{'border':isEdit?'1px solid green':'none'}"  type="text" value={{user.firstname}} [disabled]="isDisplay"></td>
+  
+<form [formGroup]="userDetailForm">
+
+  <!-- <td><input required [(ngModel)]="firstName" [ngStyle]="{'border':isEdit?'1px solid green':'none'}"  type="text" value={{user.firstname}} ></td>
   <td><input [(ngModel)]="middleName" [ngStyle]="{'border':isEdit?'1px solid green':'none'}" type="text" value={{user.middlename}} [disabled]="isDisplay"></td>
   <td><input [(ngModel)]="lastName" [ngStyle]="{'border':isEdit?'1px solid green':'none'}" type="text" value={{user.lastname}} [disabled]="isDisplay"></td>
   <td> <input [(ngModel)]="email" [ngStyle]="{'border':isEdit?'1px solid green':'none'}" type="text" value={{user.email}} [disabled]="isDisplay"> </td>
   <td><input [(ngModel)]="phoneNumber" [ngStyle]="{'border':isEdit?'1px solid green':'none'}" type="text" value={{user.phonenumber}} [disabled]="isDisplay"></td>
   <td><input [(ngModel)]="role" [ngStyle]="{'border':isEdit?'1px solid green':'none'}" type="text" value={{user.role}} [disabled]="isDisplay"></td>
   <td><input [(ngModel)]="address" [ngStyle]="{'border':isEdit?'1px solid green':'none'}" type="text" value={{user.address}} [disabled]="isDisplay"></td>
-  <!-- <td><input type="text" value={{user.createdAt}}></td>
+   <td><input type="text" value={{user.createdAt}}></td> 
   <td><input type="text" value={{user.updatedAt}}></td> -->
-</tr>
+  <div class="container">
+
+  
+  <div>
+    <input [attr.disabled]="isDisplay" required formControlName="firstName" name="firstname" [ngStyle]="{'border':isEdit?'1px solid green':'none'}"  type="text" value={{user.firstname}}>
+    <span *ngIf="checkRequiredCondition(this.userDetailForm.get('firstName'))" style="color: red;font-weight: bold; ">First Name is required</span>
+  
+  </div>
+  <div>
+    <input [attr.disabled]="isDisplay" formControlName="middleName" name="middlename" [ngStyle]="{'border':isEdit?'1px solid green':'none'}" type="text" value={{user.middlename}} >
+  
+  </div>
+
+ <div>
+  <input [attr.disabled]="isDisplay" formControlName="lastName" name="lastname" [ngStyle]="{'border':isEdit?'1px solid green':'none'}" type="text" value={{user.lastname}} >
+
+ </div>
+  
+  <div>
+    <input required  [attr.disabled]="isDisplay" formControlName="email" name="email" [ngStyle]="{'border':isEdit?'1px solid green':'none'}" type="email" value={{user.email}} > 
+    <span *ngIf="checkRequiredCondition(this.userDetailForm.get('email'))" style="color: red; font-weight: bold;">Email is required</span>
+     <span *ngIf="checkInvalidCondition(this.userDetailForm.get('email'))" style="color: red;font-weight: bold; ">Email is invalid</span>
+    
+  </div> 
+  <div>
+    <input [attr.disabled]="isDisplay" formControlName="phoneNumber" type="number" name="phoneNumber" [ngStyle]="{'border':isEdit?'1px solid green':'none'}"  value={{user.phonenumber}} >
+    <span *ngIf="checkRequiredCondition(this.userDetailForm.get('phoneNumber'))" style="color: red;font-weight: bold; ">Number is required</span>
+    <span *ngIf="checkInvalidCondition(this.userDetailForm.get('phoneNumber'))" style="color: red;font-weight: bold; ">Number is invalid</span>
+  
+  </div>
+  <div>
+    <input [attr.disabled]="isDisplay" formControlName="role" name="role" [ngStyle]="{'border':isEdit?'1px solid green':'none'}" type="text" value={{user.role}} [disabled]="true">
+    <span *ngIf="checkRequiredCondition(this.userDetailForm.get('role'))" style="color: red;font-weight: bold; ">Number is required</span>
+
+  </div>
+  <div>
+    <input [attr.disabled]="isDisplay"  formControlName="address" name="address" [ngStyle]="{'border':isEdit?'1px solid green':'none'}" type="text" value={{user.address}} >
+    <span *ngIf="checkRequiredCondition(this.userDetailForm.get('address'))" style="color: red;font-weight: bold; ">Number is required</span>
+
+  </div>
+  
+<i *ngIf="!isEdit"  (click)="onEdit(user.id)" style="color:yellow;font-size: 30px; margin-left: 20px;"class="fa fa-edit"></i>
+<i *ngIf="!isEdit" (click)="onDelete(user.id)" style="color:red;font-size: 30px; margin-left: 20px;" class="fa fa-trash"></i>
+
+<i *ngIf="isEdit" [ngStyle]="{'display':this.userDetailForm.invalid?'none':'block'}" (click)="onSave(user.id)" style="color:yellow;font-size: 30px; margin-left: 20px;"class="fa fa-save"></i>
+<i *ngIf="isEdit" (click)="onCancel(user.id)" style="color:red;font-size: 30px; margin-left: 20px;" class="fa fa-window-close"></i>
+</div>
+</form>
 <!-- <button (click)="onEdit(user.id)">Edit</button>
 <button (click)="onDelete(user.id)">Delete</button> -->
 <!-- <i (click)="onEdit(user.id)" style="color:yellow;font-size: 30px; margin-left: 20px;"class="fa fa-edit"></i>
 <i  (click)="onDelete(user.id)" style="color:red;font-size: 30px; margin-left: 20px;" class="fa fa-trash"></i> -->
 
-<i *ngIf="!isEdit" (click)="onEdit(user.id)" style="color:yellow;font-size: 30px; margin-left: 20px;"class="fa fa-edit"></i>
-<i *ngIf="!isEdit" (click)="onDelete(user.id)" style="color:red;font-size: 30px; margin-left: 20px;" class="fa fa-trash"></i>
-
-<i *ngIf="isEdit" (click)="onSave(user.id)" style="color:yellow;font-size: 30px; margin-left: 20px;"class="fa fa-save"></i>
-<i *ngIf="isEdit" (click)="onCancel(user.id)" style="color:red;font-size: 30px; margin-left: 20px;" class="fa fa-window-close"></i>
 <hr>
 <br>
-
-<!-- 
-<table class="table table-striped table-hover">
-  <thead>
-    <tr>
-      <th>
-        <span class="custom-checkbox">
-          <input type="checkbox" id="selectAll">
-          <label for="selectAll"></label>
-        </span>
-      </th>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Address</th>
-      <th>Phone</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-        <span class="custom-checkbox">
-          <input type="checkbox" id="checkbox1" name="options[]" value="1">
-          <label for="checkbox1"></label>
-        </span>
-      </td>
-      <td>Thomas Hardy</td>
-      <td>thomashardy@mail.com</td>
-      <td>89 Chiaroscuro Rd, Portland, USA</td>
-      <td>(171) 555-2222</td>
-      <td>
-        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <span class="custom-checkbox">
-          <input type="checkbox" id="checkbox2" name="options[]" value="1">
-          <label for="checkbox2"></label>
-        </span>
-      </td>
-      <td>Dominique Perrier</td>
-      <td>dominiqueperrier@mail.com</td>
-      <td>Obere Str. 57, Berlin, Germany</td>
-      <td>(313) 555-5735</td>
-      <td>
-        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <span class="custom-checkbox">
-          <input type="checkbox" id="checkbox3" name="options[]" value="1">
-          <label for="checkbox3"></label>
-        </span>
-      </td>
-      <td>Maria Anders</td>
-      <td>mariaanders@mail.com</td>
-      <td>25, rue Lauriston, Paris, France</td>
-      <td>(503) 555-9931</td>
-      <td>
-        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <span class="custom-checkbox">
-          <input type="checkbox" id="checkbox4" name="options[]" value="1">
-          <label for="checkbox4"></label>
-        </span>
-      </td>
-      <td>Fran Wilson</td>
-      <td>franwilson@mail.com</td>
-      <td>C/ Araquil, 67, Madrid, Spain</td>
-      <td>(204) 619-5731</td>
-      <td>
-        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-      </td>
-    </tr>					
-    <tr>
-      <td>
-        <span class="custom-checkbox">
-          <input type="checkbox" id="checkbox5" name="options[]" value="1">
-          <label for="checkbox5"></label>
-        </span>
-      </td>
-      <td>Martin Blank</td>
-      <td>martinblank@mail.com</td>
-      <td>Via Monte Bianco 34, Turin, Italy</td>
-      <td>(480) 631-2097</td>
-      <td>
-        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-      </td>
-    </tr> 
-  </tbody>
-</table> -->

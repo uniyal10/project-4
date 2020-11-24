@@ -20,7 +20,7 @@
   <app-user (saveEvent)="saveEvent($event)" (deleteEvent)="deleteEvent($event)" *ngFor="let user of users"
     [user]="user"></app-user>
 </div>
-<div *ngIf="isEdit" class="container">
+<!-- <div *ngIf="isEdit" class="container">
   <app-edit (saveEvent)="saveEvent($event)" (cancelEvent)="cancelEvent()" *ngFor="let user of userEdit" [user]="user">
   </app-edit>
-</div>
+</div> -->

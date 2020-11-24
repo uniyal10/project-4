@@ -21,13 +21,19 @@ i:hover{
     background-color: blueviolet;
   }
 
-td{
-  padding: 10px;
-}
 
 input{
   border: none;
   text-align: center;
   background-color: white;
-  padding: 10px 0px;
+  padding: 10px 10px;
+  margin: 5px;
+}
+
+.container{
+  display: flex;
+}
+.container div{
+  display: flex;
+  flex-direction: column;
 }

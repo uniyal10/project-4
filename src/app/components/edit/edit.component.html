@@ -1,37 +1,49 @@
 <div class="container">
-  <form action="">
+  <form action="" [formGroup]="userDetailsForm">
     <div class="input">
       <label for="firstName">firstName</label>
-      <input name="firstName" [(ngModel)]="firstName" type="text">
+      <input name="firstName" formControlName="firstName" type="text">
     </div>
+    <span style="color: red;font-weight: bold;" *ngIf="checkRequiredCondition(this.userDetailsForm.get('firstName'))">First Name is required</span>
     <div class="input">
       <label for="middleName">middleName</label>
-      <input name="middleName" [(ngModel)]="middleName" type="text">
+      <input name="middleName" formControlName="middleName" type="text">
     </div>
+
     <div class="input">
       <label for="lastName">lastName</label>
-      <input name="lastName" [(ngModel)]="lastName" type="text">
+      <input name="lastName" formControlName="lastName" type="text">
     </div>
     <div class="input">
       <label for="email">email</label>
-      <input name="email" [(ngModel)]="email" type="text">
-    </div>
+      <input name="email" formControlName="email" type="text">
+      </div>
+      <span  style="color: red;font-weight: bold;" *ngIf="checkRequiredCondition(this.userDetailsForm.get('email'))">Email is required</span>
+      <span  style="color: red;font-weight: bold;" *ngIf="checkInvalidCondition(this.userDetailsForm.get('email'))">Email is invalid</span>
+    
     <div class="input">
       <label for="number">phoneNumber</label>
-      <input [(ngModel)]="phoneNumber" name="number" type="text">
+      <input formControlName="phoneNumber" name="number" type="number">
     </div>
+    <span  style="color: red;font-weight: bold;" *ngIf="checkRequiredCondition(this.userDetailsForm.get('phoneNumber'))">Number is required</span>
+    <span  style="color: red;font-weight: bold;" *ngIf="checkInvalidCondition(this.userDetailsForm.get('phoneNumber'))">Number is invalid</span>
+
     <div class="input">
       <label for="role">role</label>
-      <input [(ngModel)]="role" name="role" type="text">
+      <input formControlName="role" name="role" type="text">
     </div>
+    <span  style="color: red;font-weight: bold;" *ngIf="checkRequiredCondition(this.userDetailsForm.get('role'))">Role is required</span>
+
     <div class="input">
       <label for="address">address</label>
-      <input name="address" [(ngModel)]="address" type="text">
+      <input name="address" formControlName="address" type="text">
     </div>
+    <span  style="color: red;font-weight: bold;" *ngIf="checkRequiredCondition(this.userDetailsForm.get('address'))">Address is required</span>
+
   </form>
 </div>
 
 <div class="btncontainer">
-  <button class="btn" (click)="onSave(user.id)">Save</button>
+  <button [ngStyle]="{'display':this.userDetailsForm.invalid?'none':''}"  class="btn" (click)="onSave()">Save</button>
   <button class="btn" (click)="onCancel()">Cancel</button>
 </div>

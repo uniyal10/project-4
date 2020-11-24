@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from "../../../models/User"
 @Component({
   selector: 'app-edit',
@@ -6,47 +7,65 @@ import { User } from "../../../models/User"
   styleUrls: ['./edit.component.css']
 })
 export class EditComponent implements OnInit {
-  @Input() user: any
   @Output() cancelEvent: EventEmitter<any> = new EventEmitter()
   @Output() saveEvent: EventEmitter<any> = new EventEmitter()
-  firstName: string
-  middleName: string
-  lastName: string
-  email: string
-  phoneNumber: string
-  role: string
-  address: string
-  constructor() {
+  userDetailsForm: FormGroup;
+  phonePattern:RegExp = /^[0-9]{10}$/i
+
+
+  emailPattern: RegExp = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+  // firstName: string
+  // middleName: string
+  // lastName: string
+  // email: string
+  // phoneNumber: string
+  // role: string
+  // address: string
+  constructor(private fb: FormBuilder) {
 
   }
 
   ngOnInit(): void {
-    console.log(this.user)
-    this.firstName = this.user.firstname
-    this.middleName = this.user.middlename
-    this.lastName = this.user.lastname
-    this.email = this.user.email
-    this.phoneNumber = '' + this.user.phonenumber
-    this.role = this.user.role
-    this.address = this.user.address
+    this.buildForm();
+  }
+
+  checkRequiredCondition(control: any){
+    return (control.touched || control.dirty) && !control.value && control.invalid;
+  }
+
+  checkInvalidCondition(control: any){
+    return  (control.touched || control.dirty) && control.invalid && control.value
+  }
+
+  buildForm = () => {
+    this.userDetailsForm = this.fb.group({
+      'firstName': new FormControl('',[Validators.required]),
+      'middleName': new FormControl('',),
+      'lastName': new FormControl('',),
+      'email':new FormControl('',[Validators.required,Validators.pattern(this.emailPattern)]),
+      'phoneNumber': new FormControl('',[Validators.required,Validators.pattern(this.phonePattern)]),
+      'role': new FormControl('',[Validators.required]),
+      'address': new FormControl('',[Validators.required])
+    });
   }
 
   onCancel() {
     this.cancelEvent.emit()
   }
 
-  onSave(id: number) {
-    const user = {
-      id: id,
-      firstname: this.firstName,
-      middlename: this.middleName,
-      lastname: this.lastName,
-      email: this.email,
-      phonenumber: this.phoneNumber,
-      role: this.role,
-      address: this.address
+  onSave() {
+    if(this.userDetailsForm.invalid){
+      return
     }
-
+    const user = {
+      firstname: this.userDetailsForm.get('firstName').value,
+      middlename: this.userDetailsForm.get('middleName').value,
+      lastname:this.userDetailsForm.get('lastName').value,
+      email: this.userDetailsForm.get('email').value,
+      phonenumber:String( this.userDetailsForm.get('phoneNumber').value),
+      role: this.userDetailsForm.get('role').value,
+      address: this.userDetailsForm.get('address').value
+    }
     this.saveEvent.emit(user)
   }
 }
