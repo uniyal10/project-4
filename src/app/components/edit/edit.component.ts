@@ -8,7 +8,7 @@ import { User } from "../../../models/User"
 })
 export class EditComponent implements OnInit {
   @Output() cancelEvent: EventEmitter<any> = new EventEmitter()
-  @Output() saveEvent: EventEmitter<any> = new EventEmitter()
+  @Output() addUserEvent: EventEmitter<any> = new EventEmitter()
   userDetailsForm: FormGroup;
   phonePattern:RegExp = /^[0-9]{10}$/i
 
@@ -66,6 +66,6 @@ export class EditComponent implements OnInit {
       role: this.userDetailsForm.get('role').value,
       address: this.userDetailsForm.get('address').value
     }
-    this.saveEvent.emit(user)
+    this.addUserEvent.emit(user)
   }
 }

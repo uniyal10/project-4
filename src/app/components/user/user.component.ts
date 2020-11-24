@@ -8,7 +8,7 @@ import { User } from "../../../models/User"
 })
 export class UserComponent implements OnInit {
   @Input() user: any
-  // @Output() editEvent: EventEmitter<any> = new EventEmitter()
+   @Output() editEvent: EventEmitter<any> = new EventEmitter()
   @Output() deleteEvent: EventEmitter<any> = new EventEmitter()
   @Output() saveEvent: EventEmitter<any> = new EventEmitter()
 
@@ -32,8 +32,8 @@ export class UserComponent implements OnInit {
 
   ngOnInit(): void {
     this.isDisplay = ""
-    this.buildUserForm();
-    this.populateUserForm();
+    this.buildUserForm()
+    this.populateUserForm()
     // this.firstName = this.user.firstname
     // this.middleName = this.user.middlename
     // this.lastName = this.user.lastname
@@ -45,7 +45,7 @@ export class UserComponent implements OnInit {
 
   populateUserForm = () => {
     if(!this.user || Object.keys(this.user).length < 1)
-    return;
+    return
 
     this.userDetailForm.get('firstName').setValue(this.user.firstname);
     this.userDetailForm.get('middleName').setValue(this.user.middlename);
@@ -58,7 +58,7 @@ export class UserComponent implements OnInit {
    
 
  checkRequiredCondition(control: any):boolean{
-    return (control.touched || control.dirty) && !control.value && control.invalid;
+    return (control.touched || control.dirty) && !control.value && control.invalid
   }
 
   checkInvalidCondition(control: any):boolean{
@@ -69,7 +69,7 @@ export class UserComponent implements OnInit {
     this.userDetailForm = new FormGroup({
       'firstName': new FormControl('',[Validators.required]),
       'middleName': new FormControl(''),
-      'lastName': new FormControl('',[Validators.required]),
+      'lastName': new FormControl(''),
       'email':new FormControl('',[Validators.required,Validators.pattern(this.emailPattern)]),
       'phoneNumber': new FormControl('',[Validators.required,Validators.pattern(this.phonePattern)]),
       'role': new FormControl('',[Validators.required]),
@@ -84,6 +84,7 @@ export class UserComponent implements OnInit {
   onEdit(){
      this.isEdit = true
      this.isDisplay = null
+   this.editEvent.emit()
   }
   onDelete(id: number) {
     // console.log(id)

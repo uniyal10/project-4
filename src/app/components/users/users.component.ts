@@ -11,16 +11,19 @@ export class UsersComponent implements OnInit {
   users: User[]
   isEdit: boolean = false
   userEdit: User[];
+  isAdd:boolean
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+    this.isAdd = false
     this.userService.getUsers().subscribe(
       users => this.users = users
     )
   }
-  editEvent(id: number) {
-    this.isEdit = true
-    this.userEdit = this.users.filter(user => user.id == id)
+  editEvent() {
+    // this.isEdit = true
+    // this.userEdit = this.users.filter(user => user.id == id)
+    this.isAdd = false
   }
 
   deleteEvent(id: number) {
@@ -39,7 +42,7 @@ export class UsersComponent implements OnInit {
 
 
   cancelEvent() {
-    this.isEdit = false
+    this.isAdd =false
   }
 
   saveEvent(user: any) {
@@ -65,5 +68,15 @@ export class UsersComponent implements OnInit {
 
     //update in  data base
     this.userService.saveUser(user).subscribe(msg => console.log(msg))
+  }
+  addUserEvent(user:User){
+    this.isAdd = false
+     this.userService.addUser(user).subscribe(msg=>{
+       // add to UI
+       this.users.push(user)
+     })
+  }
+  addEvent(){
+    this.isAdd = true
   }
 }

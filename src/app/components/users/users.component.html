@@ -1,3 +1,6 @@
+<app-header (addUserEvent)="addEvent()"></app-header>
+
+
 <div *ngIf="!isEdit" class="container">
   <tr>
     <!-- <th><input  value="firstname" readonly></th>
@@ -8,19 +11,20 @@
     <th><input value="role" readonly></th>
     <th><input value="address" readonly></th>
     <th><input value="actions" readonly></th> -->
-    <th>firstname</th>
-    <th>middlename</th>
-    <th>lastname</th>
-    <th>email</th>
-    <th>phone</th>
-    <th>role</th>
-    <th>address</th>
-    <th>actions</th>
+    <th>Firstname</th>
+    <th>Middlename</th>
+    <th>Lastname</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Role</th>
+    <th>Address</th>
+    <th>Actions</th>
   </tr>
-  <app-user (saveEvent)="saveEvent($event)" (deleteEvent)="deleteEvent($event)" *ngFor="let user of users"
+  <app-edit *ngIf="isAdd" (cancelEvent)="cancelEvent()" (addUserEvent)="addUserEvent($event)"></app-edit>
+  <app-user (saveEvent)="saveEvent($event)" (editEvent)="editEvent()" (deleteEvent)="deleteEvent($event)" *ngFor="let user of users"
     [user]="user"></app-user>
 </div>
 <!-- <div *ngIf="isEdit" class="container">
   <app-edit (saveEvent)="saveEvent($event)" (cancelEvent)="cancelEvent()" *ngFor="let user of userEdit" [user]="user">
   </app-edit>
-</div> -->
+</div> -->    

@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
   <form action="" [formGroup]="userDetailsForm">
     <div class="input">
       <label for="firstName">firstName</label>
@@ -46,4 +46,78 @@
 <div class="btncontainer">
   <button [ngStyle]="{'display':this.userDetailsForm.invalid?'none':''}"  class="btn" (click)="onSave()">Save</button>
   <button class="btn" (click)="onCancel()">Cancel</button>
-</div>
+</div> -->
+
+
+
+
+
+
+
+
+  <!-- <td>{{user.id}}</td> -->
+  
+  <form [formGroup]="userDetailsForm">
+
+    <!-- <td><input required [(ngModel)]="firstName"   type="text" value={{user.firstname}} ></td>
+    <td><input [(ngModel)]="middleName" [ngStyle]="{'border':isEdit?'1px solid green':'none'}" type="text" value={{user.middlename}} [disabled]="isDisplay"></td>
+    <td><input [(ngModel)]="lastName" [ngStyle]="{'border':isEdit?'1px solid green':'none'}" type="text" value={{user.lastname}} [disabled]="isDisplay"></td>
+    <td> <input [(ngModel)]="email" [ngStyle]="{'border':isEdit?'1px solid green':'none'}" type="text" value={{user.email}} [disabled]="isDisplay"> </td>
+    <td><input [(ngModel)]="phoneNumber" [ngStyle]="{'border':isEdit?'1px solid green':'none'}" type="text" value={{user.phonenumber}} [disabled]="isDisplay"></td>
+    <td><input [(ngModel)]="role" [ngStyle]="{'border':isEdit?'1px solid green':'none'}" type="text" value={{user.role}} [disabled]="isDisplay"></td>
+    <td><input [(ngModel)]="address" [ngStyle]="{'border':isEdit?'1px solid green':'none'}" type="text" value={{user.address}} [disabled]="isDisplay"></td>
+     <td><input type="text" value={{user.createdAt}}></td> 
+    <td><input type="text" value={{user.updatedAt}}></td> -->
+    <div class="container">
+  
+    
+    <div>
+      <input  required placeholder="firstname" formControlName="firstName" name="firstname"   type="text" >
+      <span *ngIf="checkRequiredCondition(this.userDetailsForm.get('firstName'))" style="color: red;font-weight: bold; ">First Name is required</span>
+    
+    </div>
+    <div>
+      <input placeholder="middlename"  formControlName="middleName" name="middlename"  type="text"  >
+    
+    </div>
+  
+   <div>
+    <input placeholder="lastname"  formControlName="lastName" name="lastname"  type="text" >
+  
+   </div>
+    
+    <div>
+      <input required placeholder="email"  formControlName="email" name="email"  type="email"  > 
+      <span *ngIf="checkRequiredCondition(this.userDetailsForm.get('email'))" style="color: red; font-weight: bold;">Email is required</span>
+       <span *ngIf="checkInvalidCondition(this.userDetailsForm.get('email'))" style="color: red;font-weight: bold; ">Email is invalid</span>
+      
+    </div> 
+    <div>
+      <input placeholder="number" formControlName="phoneNumber" type="number" name="phoneNumber"    >
+      <span *ngIf="checkRequiredCondition(this.userDetailsForm.get('phoneNumber'))" style="color: red;font-weight: bold; ">Number is required</span>
+      <span *ngIf="checkInvalidCondition(this.userDetailsForm.get('phoneNumber'))" style="color: red;font-weight: bold; ">Number is invalid</span>
+    
+    </div>
+    <div>
+      <input placeholder="role"  formControlName="role" name="role"  type="text"  [disabled]="true">
+      <span *ngIf="checkRequiredCondition(this.userDetailsForm.get('role'))" style="color: red;font-weight: bold; ">Number is required</span>
+  
+    </div>
+    <div>
+      <input placeholder="address"   formControlName="address" name="address"  type="text"  >
+      <span *ngIf="checkRequiredCondition(this.userDetailsForm.get('address'))" style="color: red;font-weight: bold; ">Number is required</span>
+  
+    </div>
+    
+  <i [ngStyle]="{'display':this.userDetailsForm.invalid?'none':'block'}" (click)="onSave()" style="color:yellow;font-size: 30px; margin-left: 20px;"class="fa fa-save"></i>
+  <i (click)="onCancel()" style="color:red;font-size: 30px; margin-left: 20px;" class="fa fa-window-close"></i>
+  </div>
+  </form>
+  <!-- <button (click)="onEdit(user.id)">Edit</button>
+  <button (click)="onDelete(user.id)">Delete</button> -->
+  <!-- <i (click)="onEdit(user.id)" style="color:yellow;font-size: 30px; margin-left: 20px;"class="fa fa-edit"></i>
+  <i  (click)="onDelete(user.id)" style="color:red;font-size: 30px; margin-left: 20px;" class="fa fa-trash"></i> -->
+  
+  <hr>
+  <br>
+  
