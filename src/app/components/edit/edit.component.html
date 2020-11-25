@@ -100,12 +100,12 @@
     </div>
     <div>
       <input placeholder="role"  formControlName="role" name="role"  type="text"  [disabled]="true">
-      <span *ngIf="checkRequiredCondition(this.userDetailsForm.get('role'))" style="color: red;font-weight: bold; ">Number is required</span>
+      <span *ngIf="checkRequiredCondition(this.userDetailsForm.get('role'))" style="color: red;font-weight: bold; ">Role is required</span>
   
     </div>
     <div>
       <input placeholder="address"   formControlName="address" name="address"  type="text"  >
-      <span *ngIf="checkRequiredCondition(this.userDetailsForm.get('address'))" style="color: red;font-weight: bold; ">Number is required</span>
+      <span *ngIf="checkRequiredCondition(this.userDetailsForm.get('address'))" style="color: red;font-weight: bold; ">Address is required</span>
   
     </div>
     

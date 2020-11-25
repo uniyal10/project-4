@@ -17,40 +17,40 @@
 
   
   <div>
-    <input [attr.disabled]="isDisplay" required formControlName="firstName" name="firstname" [ngStyle]="{'border':isEdit?'1px solid green':'none'}"  type="text" value={{user.firstname}}>
+    <input [placeholder]="isEdit?'firstname':''" [attr.disabled]="isDisplay" required formControlName="firstName" name="firstname" [ngStyle]="{'border':isEdit?'1px solid green':'none'}"  type="text" value={{user.firstname}}>
     <span *ngIf="checkRequiredCondition(this.userDetailForm.get('firstName'))" style="color: red;font-weight: bold; ">First Name is required</span>
   
   </div>
   <div>
-    <input [attr.disabled]="isDisplay" formControlName="middleName" name="middlename" [ngStyle]="{'border':isEdit?'1px solid green':'none'}" type="text" value={{user.middlename}} >
+    <input [placeholder]="isEdit?'middlename':''" [attr.disabled]="isDisplay" formControlName="middleName" name="middlename" [ngStyle]="{'border':isEdit?'1px solid green':'none'}" type="text" value={{user.middlename}} >
   
   </div>
 
  <div>
-  <input [attr.disabled]="isDisplay" formControlName="lastName" name="lastname" [ngStyle]="{'border':isEdit?'1px solid green':'none'}" type="text" value={{user.lastname}} >
+  <input [placeholder]="isEdit?'lastname':''" [attr.disabled]="isDisplay" formControlName="lastName" name="lastname" [ngStyle]="{'border':isEdit?'1px solid green':'none'}" type="text" value={{user.lastname}} >
 
  </div>
   
   <div>
-    <input required  [attr.disabled]="isDisplay" formControlName="email" name="email" [ngStyle]="{'border':isEdit?'1px solid green':'none'}" type="email" value={{user.email}} > 
+    <input [placeholder]="isEdit?'email':''" required  [attr.disabled]="isDisplay" formControlName="email" name="email" [ngStyle]="{'border':isEdit?'1px solid green':'none'}" type="email" value={{user.email}} > 
     <span *ngIf="checkRequiredCondition(this.userDetailForm.get('email'))" style="color: red; font-weight: bold;">Email is required</span>
      <span *ngIf="checkInvalidCondition(this.userDetailForm.get('email'))" style="color: red;font-weight: bold; ">Email is invalid</span>
     
   </div> 
   <div>
-    <input [attr.disabled]="isDisplay" formControlName="phoneNumber" type="number" name="phoneNumber" [ngStyle]="{'border':isEdit?'1px solid green':'none'}"  value={{user.phonenumber}} >
+    <input [placeholder]="isEdit?'number':''" [attr.disabled]="isDisplay" formControlName="phoneNumber" type="number" name="phoneNumber" [ngStyle]="{'border':isEdit?'1px solid green':'none'}"  value={{user.phonenumber}} >
     <span *ngIf="checkRequiredCondition(this.userDetailForm.get('phoneNumber'))" style="color: red;font-weight: bold; ">Number is required</span>
     <span *ngIf="checkInvalidCondition(this.userDetailForm.get('phoneNumber'))" style="color: red;font-weight: bold; ">Number is invalid</span>
   
   </div>
   <div>
-    <input [attr.disabled]="isDisplay" formControlName="role" name="role" [ngStyle]="{'border':isEdit?'1px solid green':'none'}" type="text" value={{user.role}} [disabled]="true">
-    <span *ngIf="checkRequiredCondition(this.userDetailForm.get('role'))" style="color: red;font-weight: bold; ">Number is required</span>
+    <input [placeholder]="isEdit?'role':''" [attr.disabled]="isDisplay" formControlName="role" name="role" [ngStyle]="{'border':isEdit?'1px solid green':'none'}" type="text" value={{user.role}} [disabled]="true">
+    <span *ngIf="checkRequiredCondition(this.userDetailForm.get('role'))" style="color: red;font-weight: bold; ">Role is required</span>
 
   </div>
   <div>
-    <input [attr.disabled]="isDisplay"  formControlName="address" name="address" [ngStyle]="{'border':isEdit?'1px solid green':'none'}" type="text" value={{user.address}} >
-    <span *ngIf="checkRequiredCondition(this.userDetailForm.get('address'))" style="color: red;font-weight: bold; ">Number is required</span>
+    <input [placeholder]="isEdit?'address':''" [attr.disabled]="isDisplay"  formControlName="address" name="address" [ngStyle]="{'border':isEdit?'1px solid green':'none'}" type="text" value={{user.address}} >
+    <span *ngIf="checkRequiredCondition(this.userDetailForm.get('address'))" style="color: red;font-weight: bold; ">Address is required</span>
 
   </div>
   
